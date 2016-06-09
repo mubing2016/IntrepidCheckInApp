@@ -1,5 +1,9 @@
 package app.com.example.mubingliu.intrepidcheckin;
 
+/* MainActivity
+ * call start and stop service
+ */
+
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
@@ -23,17 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -42,16 +36,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //method to start the service
+    //method to start MyService.class
     public void startService(View view) {
         startService(new Intent(getBaseContext(), MyService.class));
     }
 
-    //method to stop the service
+    //method to stop MyService.class
     public void stopService(View view) {
         stopService(new Intent(getBaseContext(), MyService.class));
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -67,6 +60,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

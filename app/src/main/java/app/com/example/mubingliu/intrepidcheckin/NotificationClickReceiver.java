@@ -21,16 +21,17 @@ import okhttp3.Response;
 
 /**
  * Created by mubingliu on 6/8/16.
+ * make http connection
+ * post string to slack channel
  */
 public class NotificationClickReceiver extends BroadcastReceiver {
     private static final String LOG_POST = NotificationClickReceiver.class.getSimpleName();
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
-
-
     OkHttpClient client = new OkHttpClient();
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
+
     private void post(String url, String json) {
         new RequestAsyncTask().execute(json, url);
     }
@@ -38,12 +39,14 @@ public class NotificationClickReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.v(LOG_POST, "POST SERVICE START.");
+        //pass string to json constructor
         SlackJsonString jsonStr = new SlackJsonString("I am here.");
         Gson gson = new Gson();
         String json = gson.toJson(jsonStr, SlackJsonString.class);
         post("https://hooks.slack.com/services/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", json);
     }
 
+    //use asynctask to run post outside of ui thread
     public class RequestAsyncTask extends AsyncTask<String, Void, Void> {
 
         @Override
@@ -60,6 +63,7 @@ public class NotificationClickReceiver extends BroadcastReceiver {
 
             try {
                 Response response = client.newCall(request).execute();
+                //log out post status
                 Log.d(LOG_POST, response.code() + " " + response.body().string());
                 Log.d(LOG_POST, response.code() + " " + response.message());
             } catch (IOException e) {
