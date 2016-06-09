@@ -1,5 +1,11 @@
 package app.com.example.mubingliu.intrepidcheckin;
 
+/**
+ * Created by mubingliu on 6/6/16.
+ * get location and update every 15 mins
+ * create notification if user is within 50 meters
+ */
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.NotificationManager;
@@ -25,11 +31,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-/**
- * Created by mubingliu on 6/6/16.
- * get location and update every 15 mins
- * create notification if user is within 50 meters
- */
+
 public class MyService extends Service implements GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 

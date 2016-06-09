@@ -1,5 +1,11 @@
 package app.com.example.mubingliu.intrepidcheckin;
 
+/**
+ * Created by mubingliu on 6/8/16.
+ * make http connection
+ * post string to slack channel
+ */
+
 import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,12 +24,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-
-/**
- * Created by mubingliu on 6/8/16.
- * make http connection
- * post string to slack channel
- */
 public class NotificationClickReceiver extends BroadcastReceiver {
     private static final String LOG_POST = NotificationClickReceiver.class.getSimpleName();
     public static final MediaType JSON
