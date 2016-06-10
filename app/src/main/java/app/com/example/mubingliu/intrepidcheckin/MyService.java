@@ -40,7 +40,7 @@ public class MyService extends Service implements GoogleApiClient.ConnectionCall
     Location mLastLocation;
     private LocationRequest mLocationRequest;
     String lat, lon;
-    private static int UPDATE_INTERVAL = 1000 * 30 * 15; //15 mins interval
+    private static int UPDATE_INTERVAL = 1000 * 60 * 15; //15 mins interval
 
     public IBinder onBind(Intent arg0) {
         return null;
