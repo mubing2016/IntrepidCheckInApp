@@ -1,23 +1,12 @@
 package app.com.example.mubingliu.intrepidcheckin;
 
-/* MainActivity
- * call start and stop service
- */
-
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-
-@TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method to start MyService.class
-    public void startService(View view) {
+    public void startMyService(View view) {
         startService(new Intent(getBaseContext(), MyService.class));
     }
 
     //method to stop MyService.class
-    public void stopService(View view) {
+    public void stopMyService(View view) {
         stopService(new Intent(getBaseContext(), MyService.class));
     }
 

@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="app.com.example.mubingliu.intrepidcheckin.MainActivityFragment"
+    tools:context="app.com.example.mubingliu.intrepidcheckin.MainActivity"
     tools:showIn="@layout/activity_main">
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:onClick="startService"
+        android:onClick="startMyService"
         android:text="  Start Service  " />
 
     <Button
@@ -32,7 +32,7 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
-        android:onClick="stopService"
+        android:onClick="stopMyService"
         android:text="Destroy Service" />
 
 

@@ -1,16 +1,14 @@
 package app.com.example.mubingliu.intrepidcheckin;
 
-/**
- * Created by mubingliu on 6/9/16.
- * Construct JSON object
- */
+
 public class SlackJsonString {
-    //create key strings
+
+    private static final String USER_NAME = "incoming-webhook-Mubing";
     public String text;
     public String username;
-    //argument should be text sent to the slack channel
+
     public SlackJsonString (String value) {
-        this.username = "incoming-webhook-Mubing";
+        this.username =  USER_NAME;
         this.text = value;
     }
 }

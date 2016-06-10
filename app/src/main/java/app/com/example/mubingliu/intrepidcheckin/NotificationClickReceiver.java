@@ -1,17 +1,10 @@
 package app.com.example.mubingliu.intrepidcheckin;
 
-/**
- * Created by mubingliu on 6/8/16.
- * make http connection
- * post string to slack channel
- */
 
-import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -25,12 +18,15 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class NotificationClickReceiver extends BroadcastReceiver {
+
     private static final String LOG_POST = NotificationClickReceiver.class.getSimpleName();
+    private static final String SLACK_POST_TEXT = "I am here.";
+    private static final String WEBHOOK_URL = "https://hooks.slack.com/services/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";
     public static final MediaType JSON
             = MediaType.parse("application/json; charset=utf-8");
+
     OkHttpClient client = new OkHttpClient();
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
 
     private void post(String url, String json) {
         new RequestAsyncTask().execute(json, url);
@@ -40,13 +36,12 @@ public class NotificationClickReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.v(LOG_POST, "POST SERVICE START.");
         //pass string to json constructor
-        SlackJsonString jsonStr = new SlackJsonString("I am here.");
+        SlackJsonString jsonStr = new SlackJsonString(SLACK_POST_TEXT);
         Gson gson = new Gson();
         String json = gson.toJson(jsonStr, SlackJsonString.class);
-        post("https://hooks.slack.com/services/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", json);
+        post(WEBHOOK_URL, json);
     }
 
-    //use asynctask to run post outside of ui thread
     public class RequestAsyncTask extends AsyncTask<String, Void, Void> {
 
         @Override
@@ -67,7 +62,7 @@ public class NotificationClickReceiver extends BroadcastReceiver {
                 Log.d(LOG_POST, response.code() + " " + response.body().string());
                 Log.d(LOG_POST, response.code() + " " + response.message());
             } catch (IOException e) {
-                e.printStackTrace();
+                Log.e("TAG", "MESSAGE", e);
             }
 
             return null;
